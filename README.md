@@ -5,23 +5,44 @@
 Repositorio de ejemplo para el uso de Patrones de diseño
 
 ## El Patrón Singleton (Instancia Única)
+
+* ¿Qué patrón se utilizó y por qué?
+
  El Patrón Singleton se utilizó para garantizar que la clase Logger tenga una y solo una instancia disponible en toda la aplicación. Esto es crucial para establecer un punto centralizado desde donde se pueden registrar mensajes y operaciones. Es una elección ideal para gestionar logs y otros recursos que deben ser compartidos globalmente para mantener la consistencia.
 
+* ¿Dónde está implementado en el código?
+
  Este patrón está implementado en el archivo api_patrones/logger.py a través de la clase Logger. La lógica específica que asegura la existencia de una única instancia se encuentra dentro del método especial __new__ de esta clase.
+
+* ¿Cómo se prueba o evidencia su uso?
 
  El uso del Singleton se manifiesta claramente en pedidos_cafe/serializers.py. Cada vez que se necesita registrar una operación, como el cálculo de un precio, se invoca Logger().registrar(...). Esto confirma que, en cada llamada, se está accediendo a la misma y única instancia del Logger para almacenar todos los mensajes.
 
 ## El Patrón Factory (Fábrica)
+
+* ¿Qué patrón se utilizó y por qué?
+
  El Patrón Factory actúa como una "fábrica centralizada" para la creación de los distintos tipos de café base, como el Espresso, Americano o Latte. Su propósito principal es desacoplar la forma en que se solicitan estos objetos de la lógica detallada de su creación. Al usar este patrón, el código que necesita un café no tiene que preocuparse por los pormenores de cómo se instancia cada tipo específico. Esto es increíblemente útil porque facilita la adición de nuevas variedades de café en el futuro sin tener que modificar el código existente que ya los utiliza. Es decir, se logra una mayor flexibilidad y un mantenimiento más sencillo.
 
+* ¿Dónde está implementado en el código?
+
  La implementación de este patrón reside en el archivo pedidos_cafe/factory.py. Aquí encontrarás la clase CafeFactory y su método estático obtener_base(tipo), que es el encargado de producir la instancia de café correcta. Las definiciones de las clases de café individuales (Espresso, Americano, Latte) están ubicadas en pedidos_cafe/base.py.
+
+* ¿Cómo se prueba o evidencia su uso?
 
  Puedes ver el Patrón Factory en acción en el archivo pedidos_cafe/serializers.py. Observa la línea cafe = CafeFactory.obtener_base(obj.tipo_base). Esta instrucción es la que invoca la fábrica para obtener la instancia de café base adecuada, basándose en el tipo de pedido especificado.
 
 ## El Patrón Builder (Constructor)
+
+* ¿Qué patrón se utilizó y por qué?
+
  El Patrón Builder se empleó para construir objetos PedidoCafe de manera compleja y paso a paso. Imagina que quieres armar un café personalizado, añadiendo ingredientes específicos o ajustando el tamaño; el Builder te permite hacer esto de forma incremental. La ventaja clave es que separa la forma en que se construye un café de su representación final. Esto resulta invaluable para crear pedidos altamente personalizados o para definir "paquetes" de café preconfigurados.
 
+* ¿Dónde está implementado en el código?
+
  La implementación de este patrón se encuentra en el archivo pedidos_cafe/builder.py. Aquí se definen las clases CafePersonalizadoBuilder (que es el constructor en sí) y CafeDirector (el director que coordina los pasos de construcción).
+
+ * ¿Cómo se prueba o evidencia su uso?
 
  Su uso es evidente en el archivo pedidos_cafe/serializers.py, específicamente dentro del método auxiliar _build_cafe_and_get_builder. Este método ilustra cómo el Director utiliza las etapas definidas en el Builder para ensamblar el café personalizado, calculando su precio final y los ingredientes incorporados.
 
