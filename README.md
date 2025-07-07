@@ -52,7 +52,7 @@ Repositorio de ejemplo para el uso de Patrones de diseño
 * Crear entorno virtual
 
 ```bash
-python -m venv venv
+python -m venv env
 ```
 * Crear un archivo 
 ```bash
