@@ -116,7 +116,7 @@ INSTALLED_APPS = [
 ## 4.-Crear el modelo en pedidos_cafe/models.py.
 
 ```bash
-from jango.db import models
+from django.db import models
 from django.core.exceptions import ValidationError
 from pedidos_cafe.factory import CafeFactory
 from pedidos_cafe.builder import CafePersonalizadoBuilder
