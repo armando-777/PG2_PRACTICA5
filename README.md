@@ -219,7 +219,7 @@ class CafeDirector:
         self.builder.ajustar_tamanio("pequeño")
 ```
 
-## 7.-Crear el factory en pedidos_cafe/basefactory.py.
+## 7.-Crear el factory en pedidos_cafe/factory.py.
 
 ```bash
 from pedidos_cafe.base import Espresso, Americano, Latte
@@ -449,15 +449,20 @@ python manage.py runserver
 
 Abre tu navegador y ve a `http://localhost:8000/`. 
 
-Inicia sesión con el superusuario que creaste anteriormente.`http://localhost:8000/admin/`.Deberías ver la opcion para agregar
-pedido cafe.
+* Inicia sesión con el superusuario que creaste anteriormente.
+```bash
+http://localhost:8000/admin/
+```
+.Deberías ver la opcion para agregar pedido cafe.
 
 ![Panel de administracion](imagenes/admin1.png)
 ![Panel de administracion](imagenes/admin2.png)
 ![Panel de administracion](imagenes/admin3.png)
 
-Para ingresar a la api.`http://localhost:8000/api/`.
-
+* Para ingresar a la api.
+```bash
+`http://localhost:8000/api/`.
+```
 ![Panel de administracion](imagenes/api1.png)
 ![Panel de administracion](imagenes/api2.png)
 
